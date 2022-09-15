@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "116232642321",
+    "project_id": "quiz-6950b",
+    "storage_bucket": "quiz-6950b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116232642321:android:bf800979d7977db3e876b0",
+        "android_client_info": {
+          "package_name": "com.example.flutter_todos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "116232642321-6dsauneeb4p8atig2lrhu3h4eu7aki94.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyDf5ynM-H_HZrEyGBohLbeiQYQZbdtqs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "116232642321-6dsauneeb4p8atig2lrhu3h4eu7aki94.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "116232642321-isv0mpnboiq8ki6g8df5vrp617rl3cqr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "me.vahella.quiz"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116232642321:android:261aad67089f01abe876b0",
+        "android_client_info": {
+          "package_name": "me.vahella.quiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "116232642321-6dsauneeb4p8atig2lrhu3h4eu7aki94.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyDf5ynM-H_HZrEyGBohLbeiQYQZbdtqs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "116232642321-6dsauneeb4p8atig2lrhu3h4eu7aki94.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "116232642321-isv0mpnboiq8ki6g8df5vrp617rl3cqr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "me.vahella.quiz"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
