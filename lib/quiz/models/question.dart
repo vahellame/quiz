@@ -1,14 +1,14 @@
 import 'package:equatable/equatable.dart';
 import 'package:quiz/quiz/models/answer.dart';
 
-class Question extends Equatable {
+class QuestionModel extends Equatable {
   final int id;
   final String title;
-  final List<Answer> answers;
-  final List<int> correctAnswersIds;
+  final List<AnswerModel> answers;
+  final List<String> correctAnswersKeys;
 
-  const Question({required this.id, required this.title, required this.answers, required this.correctAnswersIds});
+  const QuestionModel({required this.id, required this.title, required this.answers, required this.correctAnswersKeys});
 
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [id, title, answers, correctAnswersKeys];
 }

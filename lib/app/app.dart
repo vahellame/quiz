@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:quiz/common/theme.dart';
 import 'package:quiz/generated/l10n.dart';
 import 'package:quiz/quiz/bloc/quiz_bloc.dart';
 import 'package:quiz/quiz/route.dart';
@@ -15,6 +16,10 @@ class QuizApp extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context) => QuizBloc(GetIt.I.get()),
       child: VRouter(
+        theme: ThemeData(
+          unselectedWidgetColor: Theme.of(context).firstColor,
+          colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Theme.of(context).firstColor),
+        ),
         useInheritedMediaQuery: true,
         debugShowCheckedModeBanner: false,
         initialUrl: QuizRoute.start,

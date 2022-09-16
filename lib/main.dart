@@ -21,6 +21,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   _initData();
+
   runApp(const QuizApp());
 }
 

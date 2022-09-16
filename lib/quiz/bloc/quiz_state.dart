@@ -7,7 +7,10 @@ abstract class QuizState extends Equatable {
   List<Object?> get props => [];
 }
 
-class QuizLoading extends QuizState {}
+class QuizError extends QuizState {
+  @override
+  List<Object> get props => [];
+}
 
 class QuizStarting extends QuizState {
   const QuizStarting({
@@ -32,40 +35,55 @@ class QuizStarting extends QuizState {
   List<Object?> get props => [category, difficulty];
 }
 
-class QuizPassing extends QuizState {
-  const QuizPassing({required this.category, required this.difficulty, required this.questions, required this.result});
+class QuizLoadingQuestions extends QuizState {
+  const QuizLoadingQuestions({
+    required this.category,
+    required this.difficulty,
+  });
 
   final QuizCategory category;
   final QuizDifficulty difficulty;
-  final List<Question> questions;
-  final Result result;
+}
+
+class QuizPassing extends QuizState {
+  const QuizPassing({
+    required this.category,
+    required this.difficulty,
+    required this.questions,
+  });
+
+  final QuizCategory category;
+  final QuizDifficulty difficulty;
+  final List<QuestionModel> questions;
 
   QuizPassing copyWith({
-    List<Question>? questions,
-    Result? result,
+    List<QuestionModel>? questions,
   }) {
     return QuizPassing(
       category: category,
       difficulty: difficulty,
       questions: questions ?? this.questions,
-      result: result ?? this.result,
     );
   }
 
   @override
-  List<Object> get props => [questions, result];
+  List<Object> get props => [questions];
 }
 
-class QuizEnded extends QuizState {
-  final Result result;
+class QuizFinishing extends QuizState {
+  final ResultModel result;
 
-  const QuizEnded(this.result);
+  const QuizFinishing({required this.result});
 
   @override
   List<Object> get props => [result];
 }
 
-class QuizError extends QuizState {
+class QuizSavingResult extends QuizState {
+  final ResultModel result;
+
+  const QuizSavingResult({required this.result});
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [result];
 }

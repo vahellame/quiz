@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/common/theme.dart';
 
 class CustomDropdown<T> extends StatefulWidget {
   const CustomDropdown({
@@ -36,11 +37,11 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
   @override
   Widget build(BuildContext context) {
     if (widget.errorText == null) {
-      _borderColor = Colors.black;
+      _borderColor = Theme.of(context).firstColor;
       _height = 40;
     } else {
       _height = 62;
-      _borderColor = Colors.red;
+      _borderColor = Theme.of(context).errorColor;
     }
     return SizedBox(
       height: _height,
@@ -52,7 +53,7 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
             child: Icon(
               Icons.arrow_drop_down,
               size: 24,
-              color: widget.errorText == null ? Colors.black : Colors.red,
+              color: widget.errorText == null ? Theme.of(context).firstColor : Theme.of(context).errorColor,
             ),
           ),
           hint: widget.hint != null
@@ -69,12 +70,12 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
               : null,
           decoration: InputDecoration(
             labelText: widget.value != null ? widget.labelText : null,
-            errorStyle: const TextStyle().copyWith(color: Colors.red),
+            errorStyle: const TextStyle().copyWith(color: Theme.of(context).errorColor),
             errorText: widget.errorText,
             contentPadding: const EdgeInsets.only(left: 14),
-            labelStyle: const TextStyle(
+            labelStyle: TextStyle(
               leadingDistribution: TextLeadingDistribution.even,
-              color: Colors.black,
+              color: Theme.of(context).firstColor,
             ),
             disabledBorder: OutlineInputBorder(
               borderSide: BorderSide(width: 1, color: _borderColor),

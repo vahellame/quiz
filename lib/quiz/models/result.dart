@@ -4,7 +4,7 @@ enum QuizCategory {
   linux('Linux'),
   devops('DevOps'),
   networking('Networking'),
-  cloud('Networking'),
+  cloud('Cloud'),
   docker('Docker'),
   kubernetes('Kubernetes');
 
@@ -29,29 +29,43 @@ enum QuizDifficulty {
   String toString() => value;
 }
 
-class Result extends Equatable {
+class ResultModel extends Equatable {
   final DateTime dateCreated;
   final QuizCategory category;
   final QuizDifficulty difficulty;
   final int answersCorrect;
   final int answersIncorrect;
+  final int questionsTotal;
+  final int questionsCorrect;
 
-  const Result(
-    this.dateCreated,
-    this.category,
-    this.difficulty,
-    this.answersCorrect,
-    this.answersIncorrect,
-  );
+  const ResultModel({
+    required this.dateCreated,
+    required this.category,
+    required this.difficulty,
+    required this.answersCorrect,
+    required this.answersIncorrect,
+    required this.questionsTotal,
+    required this.questionsCorrect,
+  });
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [
+        dateCreated,
+        category,
+        difficulty,
+        answersCorrect,
+        answersIncorrect,
+        questionsTotal,
+        questionsCorrect,
+      ];
 
   Map<String, dynamic> toJson() => {
-        'dateCreated': dateCreated.toIso8601String(),
-        'category': category,
-        'difficulty': difficulty,
-        'answersCorrect': answersCorrect,
-        'answersIncorrect': answersIncorrect,
+        'date_created': dateCreated.toIso8601String(),
+        'category': category.toString(),
+        'difficulty': difficulty.toString(),
+        'answers_correct': answersCorrect,
+        'answers_incorrect': answersIncorrect,
+        'questions_total': questionsTotal,
+        'questions_correct': questionsCorrect,
       };
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/common/theme.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -19,7 +20,7 @@ class CustomButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).firstColor,
       ),
       onPressed: onPressed,
       child: SizedBox(
@@ -29,7 +30,7 @@ class CustomButton extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16, right: 16),
             child: Text(
               text,
-              style: const TextStyle().copyWith(color: Colors.white),
+              style: const TextStyle().copyWith(color: Theme.of(context).secondColor),
             ),
           ),
         ),

@@ -1,35 +1,56 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 import 'package:quiz/quiz/models/models.dart';
 
 class QuestionsAPI {
   static const String _baseUrl = 'quizapi.io';
 
-  final http.Client _httpClient = http.Client();
+  final Dio _dio = Dio();
 
-  Future<List<Question>> getQuestions({required QuizCategory category, required QuizDifficulty difficulty}) async {
-    final request = Uri.https(
+  Future<List<QuestionModel>> getQuestions({required QuizCategory category, required QuizDifficulty difficulty}) async {
+    final url = Uri.https(
       _baseUrl,
-      '/api/location/search',
-      {
+      '/api/v1/questions',
+    );
+    final response = await _dio.get(
+      url.toString(),
+      queryParameters: {
         'limit': 10,
-        'category': category,
-        'difficulty': difficulty,
+        'category': QuizCategory.devops,
+        'difficulty': QuizDifficulty.hard,
         'apiKey': 'IExdWroYhiZgWCoz2XCbjqP5CpUpuQ1nOPsJnwQu', // Not good, but it test project
       },
     );
-    final response = await _httpClient.get(request);
-    final List<Map> dataRaw = jsonDecode(response.body);
-    final List<Question> questions = [];
+    final List dataRaw = response.data;
+    final List<QuestionModel> questions = [];
     for (Map questionRaw in dataRaw) {
-      final List<Answer> answers = [];
-      final List<int> correctAnswersIds = [];
+      final List<AnswerModel> answers = [];
+      final Map answersRaw = questionRaw['answers'];
+      for (String answerKey in answersRaw.keys) {
+        if (answersRaw[answerKey] != null) {
+          answers.add(
+            AnswerModel(
+              key: answerKey.split('_')[1],
+              answer: answersRaw[answerKey],
+              isAnswered: false,
+            ),
+          );
+        }
+      }
+
+      final List<String> correctAnswersKeys = [];
+      final Map correctAnswersRaw = questionRaw['correct_answers'];
+      for (String correctAnswerKey in correctAnswersRaw.keys) {
+        if (correctAnswersRaw[correctAnswerKey] == 'true') {
+          correctAnswersKeys.add(correctAnswerKey.split('_')[1]);
+        }
+      }
+      print(correctAnswersKeys);
       questions.add(
-        Question(
+        QuestionModel(
           id: questionRaw['id'],
           title: questionRaw['question'],
           answers: answers,
-          correctAnswersIds: correctAnswersIds,
+          correctAnswersKeys: correctAnswersKeys,
         ),
       );
     }

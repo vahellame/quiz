@@ -5,20 +5,10 @@ abstract class QuizEvent extends Equatable {
   const QuizEvent();
 }
 
-class QuizAnswered extends QuizEvent {
-  final int questionId;
-  final int answerId;
-
-  const QuizAnswered(this.questionId, this.answerId);
-
-  @override
-  List<Object?> get props => [questionId, answerId];
-}
-
 class QuizChangedCategory extends QuizEvent {
   final QuizCategory category;
 
-  const QuizChangedCategory(this.category);
+  const QuizChangedCategory({required this.category});
 
   @override
   List<Object?> get props => [category];
@@ -27,8 +17,38 @@ class QuizChangedCategory extends QuizEvent {
 class QuizChangedDifficulty extends QuizEvent {
   final QuizDifficulty difficulty;
 
-  const QuizChangedDifficulty(this.difficulty);
+  const QuizChangedDifficulty({required this.difficulty});
 
   @override
   List<Object?> get props => [difficulty];
+}
+
+class QuizStarted extends QuizEvent {
+  @override
+  List<Object?> get props => [];
+}
+
+class QuizAnswered extends QuizEvent {
+  final int questionId;
+  final String answerKey;
+
+  const QuizAnswered({required this.questionId, required this.answerKey});
+
+  @override
+  List<Object?> get props => [questionId, answerKey];
+}
+
+class QuizFinished extends QuizEvent {
+  @override
+  List<Object?> get props => [];
+}
+
+class QuizRestarted extends QuizEvent {
+  @override
+  List<Object?> get props => [];
+}
+
+class QuizSavedResult extends QuizEvent {
+  @override
+  List<Object?> get props => [];
 }

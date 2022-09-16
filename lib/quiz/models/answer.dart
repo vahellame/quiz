@@ -1,11 +1,22 @@
 import 'package:equatable/equatable.dart';
 
-class Answer extends Equatable {
-  final int id;
+class AnswerModel extends Equatable {
+  final String key;
   final String answer;
+  final bool isAnswered;
 
-  const Answer({required this.id, required this.answer});
+  const AnswerModel({required this.key, required this.answer, required this.isAnswered});
+
+  AnswerModel copyWith({
+    bool? isAnswered,
+  }) {
+    return AnswerModel(
+      key: key,
+      answer: answer,
+      isAnswered: isAnswered ?? this.isAnswered,
+    );
+  }
 
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [key, answer, isAnswered];
 }

@@ -8,6 +8,9 @@ class QuestionsRepository {
   final QuestionsAPI _questionsAPI;
   final FirebaseAPI _firebaseAPI;
 
-  Future<List<Question>> getQuestions({required QuizCategory category, required QuizDifficulty difficulty}) => _questionsAPI.getQuestions(category: category, difficulty: difficulty);
-  Future<void> saveResult(Result result) => _firebaseAPI.saveResult(result);
+  Future<List<QuestionModel>> getQuestions({required QuizCategory category, required QuizDifficulty difficulty}) => _questionsAPI.getQuestions(category: category, difficulty: difficulty);
+
+  Future<void> saveResult(ResultModel result) async {
+    await _firebaseAPI.saveResult(result);
+  }
 }

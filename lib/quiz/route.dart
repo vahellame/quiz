@@ -1,5 +1,6 @@
-import 'package:quiz/quiz/screens/questions_screen.dart';
-import 'package:quiz/quiz/screens/start_screen.dart';
+import 'package:quiz/quiz/screens/questions/screen.dart';
+import 'package:quiz/quiz/screens/result/screen.dart';
+import 'package:quiz/quiz/screens/start/screen.dart';
 import 'package:vrouter/vrouter.dart';
 
 class QuizRoute extends VRouteElementBuilder {
@@ -17,6 +18,10 @@ class QuizRoute extends VRouteElementBuilder {
       VWidget(
         path: questions,
         widget: const QuestionsScreen(),
+      ),
+      VWidget(
+        path: result,
+        widget: const ResultScreen(),
       ),
     ];
   }
