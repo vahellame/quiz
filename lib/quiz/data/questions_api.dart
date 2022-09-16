@@ -1,26 +1,28 @@
-import 'package:dio/dio.dart';
+import 'dart:convert';
+
 import 'package:quiz/quiz/models/models.dart';
+import 'package:http/http.dart' as http;
 
 class QuestionsAPI {
   static const String _baseUrl = 'quizapi.io';
 
-  final Dio _dio = Dio();
+  final http.Client _httpClient = http.Client();
 
   Future<List<QuestionModel>> getQuestions({required QuizCategory category, required QuizDifficulty difficulty}) async {
     final url = Uri.https(
       _baseUrl,
       '/api/v1/questions',
-    );
-    final response = await _dio.get(
-      url.toString(),
-      queryParameters: {
-        'limit': 10,
+      {
+        'limit': 10.toString(),
         'category': category.toString(),
         'difficulty': difficulty.toString(),
         'apiKey': 'IExdWroYhiZgWCoz2XCbjqP5CpUpuQ1nOPsJnwQu', // Not good, but it test project
       },
     );
-    final List dataRaw = response.data;
+    final http.Response response = await _httpClient.get(
+      url,
+    );
+    final dataRaw = jsonDecode(response.body);
     final List<QuestionModel> questions = [];
     for (Map questionRaw in dataRaw) {
       final List<AnswerModel> answers = [];
@@ -44,7 +46,6 @@ class QuestionsAPI {
           correctAnswersKeys.add(correctAnswerKey.split('_')[1]);
         }
       }
-      print(correctAnswersKeys);
       questions.add(
         QuestionModel(
           id: questionRaw['id'],

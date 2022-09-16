@@ -13,7 +13,6 @@ class ResultScreen extends StatelessWidget {
     return CustomScreen(
       child: BlocBuilder<QuizBloc, QuizState>(
         builder: (context, state) {
-          print(state);
           if (state is QuizSavingResult) {
             return const Loader();
           } else if (state is QuizFinishing) {
