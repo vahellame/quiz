@@ -15,8 +15,8 @@ class QuestionsAPI {
       url.toString(),
       queryParameters: {
         'limit': 10,
-        'category': QuizCategory.devops,
-        'difficulty': QuizDifficulty.hard,
+        'category': category.toString(),
+        'difficulty': difficulty.toString(),
         'apiKey': 'IExdWroYhiZgWCoz2XCbjqP5CpUpuQ1nOPsJnwQu', // Not good, but it test project
       },
     );
