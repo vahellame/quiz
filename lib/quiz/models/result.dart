@@ -7,7 +7,7 @@ enum QuizCategory {
   docker('Docker'),
   html('HTML'),
   mySql('MySQL'),
-  wordPress('MySQL'),
+  wordPress('WordPress'),
   laravel('Laravel'),
   kubernetes('Kubernetes'),
   javaScript('JavaScript'),
