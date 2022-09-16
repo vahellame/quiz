@@ -1,0 +1,13 @@
+{
+  "_locale": "en",
+  "@_START_KEYS": {
+  },
+  "start_title": "Start",
+  "category_title_label": "Category",
+  "category_dropdown_label": "Select category",
+  "difficulty_label": "Difficulty",
+  "difficulty_dropdown_label": "Select difficulty",
+  "question_button_text": "Start",
+  "@_QUESTIONS_KEYS": {
+  }
+}

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quiz/common/l10n/generated/l10n.dart';
 import 'package:quiz/common/theme.dart';
 import 'package:quiz/common/widgets/custom_button.dart';
 import 'package:quiz/common/widgets/custom_dropdown.dart';
@@ -8,7 +9,6 @@ import 'package:quiz/quiz/bloc/quiz_bloc.dart';
 import 'package:quiz/quiz/models/models.dart';
 import 'package:quiz/quiz/route.dart';
 import 'package:vrouter/vrouter.dart';
-
 
 class StartScreen extends StatefulWidget {
   const StartScreen({Key? key}) : super(key: key);
@@ -27,7 +27,7 @@ class _StartScreenState extends State<StartScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 16, top: 16),
             child: Text(
-              'Start',
+              S.current.start_title,
               style: TextStyle(
                 color: Theme.of(context).firstColor,
                 fontWeight: FontWeight.w600,
@@ -39,7 +39,7 @@ class _StartScreenState extends State<StartScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
             child: Text(
-              'Category',
+              S.current.category_title_label,
               style: const TextStyle().copyWith(color: Theme.of(context).firstColor),
             ),
           ),
@@ -51,14 +51,14 @@ class _StartScreenState extends State<StartScreen> {
                   return CustomDropdown(
                     initialValue: null,
                     value: state.category,
-                    hint: 'Select category',
+                    hint: S.current.category_dropdown_label,
                     items: QuizCategory.values,
                     onChanged: (value) {
                       if (value != null) {
                         context.read<QuizBloc>().add(QuizChangedCategory(category: value));
                       }
                     },
-                    labelText: 'Select category',
+                    labelText: S.current.category_dropdown_label,
                   );
                 } else {
                   return const Text('Something went wrong');

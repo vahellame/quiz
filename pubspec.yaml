@@ -14,6 +14,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.17.0
+  intl_utils: ^2.7.0
   flutter_bloc: ^8.1.1
   equatable: ^2.0.5
   vrouter: ^1.2.1
@@ -31,3 +32,5 @@ flutter:
 
 flutter_intl:
   enabled: true
+  arb_dir: lib/common/l10n
+  output_dir: lib/common/l10n/generated

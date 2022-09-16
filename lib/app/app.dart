@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:quiz/common/l10n/generated/l10n.dart';
 import 'package:quiz/common/theme.dart';
-import 'package:quiz/generated/l10n.dart';
 import 'package:quiz/quiz/bloc/quiz_bloc.dart';
 import 'package:quiz/quiz/route.dart';
 import 'package:flutter/material.dart';

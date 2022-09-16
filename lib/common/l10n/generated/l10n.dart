@@ -60,11 +60,61 @@ class S {
     );
   }
 
-  /// `Hello`
-  String get hello {
+  /// `Start`
+  String get start_title {
     return Intl.message(
-      'Hello',
-      name: 'hello',
+      'Start',
+      name: 'start_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Category`
+  String get category_title_label {
+    return Intl.message(
+      'Category',
+      name: 'category_title_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select category`
+  String get category_dropdown_label {
+    return Intl.message(
+      'Select category',
+      name: 'category_dropdown_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Difficulty`
+  String get difficulty_label {
+    return Intl.message(
+      'Difficulty',
+      name: 'difficulty_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select difficulty`
+  String get difficulty_dropdown_label {
+    return Intl.message(
+      'Select difficulty',
+      name: 'difficulty_dropdown_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start`
+  String get question_button_text {
+    return Intl.message(
+      'Start',
+      name: 'question_button_text',
       desc: '',
       args: [],
     );
