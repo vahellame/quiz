@@ -22,6 +22,7 @@ class QuestionsAPI {
     final http.Response response = await _httpClient.get(
       url,
     );
+    print(response.statusCode);
     final dataRaw = jsonDecode(response.body);
     final List<QuestionModel> questions = [];
     for (Map questionRaw in dataRaw) {

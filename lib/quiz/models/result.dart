@@ -2,16 +2,11 @@ import 'package:equatable/equatable.dart';
 
 enum QuizCategory {
   linux('Linux'),
-  bash('BASH'),
-  php('PHP'),
   docker('Docker'),
-  html('HTML'),
-  mySql('MySQL'),
-  wordPress('WordPress'),
-  laravel('Laravel'),
-  kubernetes('Kubernetes'),
-  javaScript('JavaScript'),
-  devOps('DevOps');
+  devOps('DevOps'),
+  code('Code'),
+  cms('CMS'),
+  sql('SQL');
 
   final String value;
 
