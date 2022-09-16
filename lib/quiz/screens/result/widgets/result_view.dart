@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:quiz/common/theme.dart';
+import 'package:quiz/common/widgets/bad_state.dart';
 import 'package:quiz/common/widgets/custom_button.dart';
 import 'package:quiz/quiz/bloc/quiz_bloc.dart';
 import 'package:quiz/quiz/route.dart';
@@ -112,7 +113,7 @@ class ResultView extends StatelessWidget {
             ],
           );
         } else {
-          return const Text('Something went wrong');
+          return const BadState();
         }
       },
     );

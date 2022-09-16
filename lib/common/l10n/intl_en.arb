@@ -1,5 +1,9 @@
 {
   "_locale": "en",
+  "@_COMMON_KEYS": {
+  },
+  "bad_state_label": "Bad state",
+  "error_state_label": "Error state",
   "@_START_KEYS": {
   },
   "start_title": "Start",
@@ -7,7 +11,20 @@
   "category_dropdown_label": "Select category",
   "difficulty_label": "Difficulty",
   "difficulty_dropdown_label": "Select difficulty",
-  "question_button_text": "Start",
+  "start_button_text": "Start",
   "@_QUESTIONS_KEYS": {
+  },
+  "questions_title": "Questions",
+  "questions_tab_text": "Question {number}",
+  "@question_tab_text" : {
+    "placeholders": {
+      "number": {}
+    }
+  },
+  "questions_button_text": "{text, select, next{Next} finishQuiz{finishQuiz} other{ERROR}}",
+  "@questions_button_text": {
+    "placeholders": {
+      "text": {}
+    }
   }
 }

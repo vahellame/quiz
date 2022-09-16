@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz/common/theme.dart';
+import 'package:quiz/common/widgets/bad_state.dart';
 import 'package:quiz/quiz/bloc/quiz_bloc.dart';
 import 'package:quiz/quiz/models/models.dart';
 
@@ -87,7 +88,7 @@ class _QuestionViewState extends State<QuestionView> {
             ],
           );
         } else {
-          return const Text('Something went wrong');
+          return const BadState();
         }
       },
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz/common/l10n/generated/l10n.dart';
 import 'package:quiz/common/theme.dart';
+import 'package:quiz/common/widgets/bad_state.dart';
 import 'package:quiz/common/widgets/custom_button.dart';
 import 'package:quiz/common/widgets/custom_dropdown.dart';
 import 'package:quiz/common/widgets/custom_screen.dart';
@@ -61,7 +62,7 @@ class _StartScreenState extends State<StartScreen> {
                     labelText: S.current.category_dropdown_label,
                   );
                 } else {
-                  return const Text('Something went wrong');
+                  return const BadState();
                 }
               },
             ),
@@ -69,7 +70,7 @@ class _StartScreenState extends State<StartScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
             child: Text(
-              'Difficulty',
+              S.current.difficulty_label,
               style: const TextStyle().copyWith(color: Theme.of(context).firstColor),
             ),
           ),
@@ -81,17 +82,17 @@ class _StartScreenState extends State<StartScreen> {
                   return CustomDropdown(
                     initialValue: null,
                     value: state.difficulty,
-                    hint: 'Select difficulty',
+                    hint: S.current.difficulty_dropdown_label,
                     items: QuizDifficulty.values,
                     onChanged: (value) {
                       if (value != null) {
                         context.read<QuizBloc>().add(QuizChangedDifficulty(difficulty: value));
                       }
                     },
-                    labelText: 'Select difficulty',
+                    labelText: S.current.difficulty_dropdown_label,
                   );
                 } else {
-                  return const Text('Something went wrong');
+                  return const BadState();
                 }
               },
             ),
@@ -105,12 +106,12 @@ class _StartScreenState extends State<StartScreen> {
                   return Opacity(
                     opacity: state.category != null && state.difficulty != null ? 1 : 0.5,
                     child: CustomButton(
-                      text: 'Start',
+                      text: S.current.start_button_text,
                       onPressed: _onButtonNextPressed,
                     ),
                   );
                 } else {
-                  return const Text('Something went wrong');
+                  return const BadState();
                 }
               },
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quiz/common/widgets/bad_state.dart';
 import 'package:quiz/common/widgets/custom_screen.dart';
 import 'package:quiz/quiz/bloc/quiz_bloc.dart';
 import 'package:quiz/common/widgets/loader.dart';
@@ -19,7 +20,7 @@ class QuestionsScreen extends StatelessWidget {
           } else if (state is QuizPassing) {
             return const Questions();
           } else {
-            return const Text('Something went wrong');
+            return const BadState();
           }
         },
       ),

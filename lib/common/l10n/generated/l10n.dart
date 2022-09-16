@@ -60,6 +60,26 @@ class S {
     );
   }
 
+  /// `Bad state`
+  String get bad_state_label {
+    return Intl.message(
+      'Bad state',
+      name: 'bad_state_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error state`
+  String get error_state_label {
+    return Intl.message(
+      'Error state',
+      name: 'error_state_label',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Start`
   String get start_title {
     return Intl.message(
@@ -111,12 +131,47 @@ class S {
   }
 
   /// `Start`
-  String get question_button_text {
+  String get start_button_text {
     return Intl.message(
       'Start',
-      name: 'question_button_text',
+      name: 'start_button_text',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Questions`
+  String get questions_title {
+    return Intl.message(
+      'Questions',
+      name: 'questions_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Question {number}`
+  String questions_tab_text(Object number) {
+    return Intl.message(
+      'Question $number',
+      name: 'questions_tab_text',
+      desc: '',
+      args: [number],
+    );
+  }
+
+  /// `{text, select, next{Next} finishQuiz{finishQuiz} other{ERROR}}`
+  String questions_button_text(Object text) {
+    return Intl.select(
+      text,
+      {
+        'next': 'Next',
+        'finishQuiz': 'finishQuiz',
+        'other': 'ERROR',
+      },
+      name: 'questions_button_text',
+      desc: '',
+      args: [text],
     );
   }
 }

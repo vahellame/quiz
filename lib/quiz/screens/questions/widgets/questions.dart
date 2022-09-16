@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quiz/common/l10n/generated/l10n.dart';
 import 'package:quiz/common/theme.dart';
+import 'package:quiz/common/widgets/bad_state.dart';
 import 'package:quiz/common/widgets/custom_button.dart';
 import 'package:quiz/quiz/bloc/quiz_bloc.dart';
 import 'package:quiz/quiz/route.dart';
 import 'package:quiz/quiz/screens/questions/widgets/question_view.dart';
 import 'package:vrouter/vrouter.dart';
+
+enum QuestionsButtonText {
+  next, finishQuiz;
+
+  @override
+  String toString() => name;
+}
 
 class Questions extends StatefulWidget {
   const Questions({Key? key}) : super(key: key);
@@ -27,6 +36,7 @@ class _QuestionsState extends State<Questions> with SingleTickerProviderStateMix
         _buttonText = 'Finish Quiz';
       } else {
         _buttonText = 'Next';
+        _buttonText = S.current.questions_button_text(42);
       }
       _tabController.addListener(
         () {
@@ -54,7 +64,7 @@ class _QuestionsState extends State<Questions> with SingleTickerProviderStateMix
               Padding(
                 padding: const EdgeInsets.only(left: 16, top: 16),
                 child: Text(
-                  'Questions',
+                  S.current.questions_title,
                   style: TextStyle(
                     color: Theme.of(context).firstColor,
                     fontWeight: FontWeight.w600,
@@ -76,7 +86,7 @@ class _QuestionsState extends State<Questions> with SingleTickerProviderStateMix
                         child: Center(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 12),
-                            child: Text('Question ${i + 1}'),
+                            child: Text(S.current.questions_tab_text(i + 1)),
                           ),
                         ),
                       ),
@@ -128,7 +138,7 @@ class _QuestionsState extends State<Questions> with SingleTickerProviderStateMix
             ],
           );
         } else {
-          return const Text('Something went wrong');
+          return const BadState();
         }
       },
     );
