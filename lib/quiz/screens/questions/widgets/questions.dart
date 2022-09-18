@@ -10,7 +10,8 @@ import 'package:quiz/quiz/screens/questions/widgets/question_view.dart';
 import 'package:vrouter/vrouter.dart';
 
 enum QuestionsButtonText {
-  next, finishQuiz;
+  next,
+  finishQuiz;
 
   @override
   String toString() => name;
@@ -25,7 +26,8 @@ class Questions extends StatefulWidget {
 
 class _QuestionsState extends State<Questions> with SingleTickerProviderStateMixin {
   late final TabController _tabController;
-  late String _buttonText;
+
+  late QuestionsButtonText _buttonText;
 
   @override
   void initState() {
@@ -33,16 +35,15 @@ class _QuestionsState extends State<Questions> with SingleTickerProviderStateMix
     if (state is QuizPassing) {
       _tabController = TabController(length: state.questions.length, vsync: this);
       if (state.questions.length == 1) {
-        _buttonText = 'Finish Quiz';
+        _buttonText = QuestionsButtonText.finishQuiz;
       } else {
-        _buttonText = 'Next';
-        _buttonText = S.current.questions_button_text(42);
+        _buttonText = QuestionsButtonText.next;
       }
       _tabController.addListener(
         () {
           setState(
             () {
-              _buttonText = _tabController.index != _tabController.length - 1 ? 'Next' : 'Finish Quiz';
+              _buttonText = _tabController.index != _tabController.length - 1 ? QuestionsButtonText.next : QuestionsButtonText.finishQuiz;
             },
           );
         },
@@ -124,15 +125,8 @@ class _QuestionsState extends State<Questions> with SingleTickerProviderStateMix
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: CustomButton(
-                  text: _buttonText,
-                  onPressed: () {
-                    if (_tabController.index != _tabController.length - 1) {
-                      _tabController.animateTo(_tabController.index + 1);
-                    } else {
-                      context.read<QuizBloc>().add(QuizFinished());
-                      context.vRouter.to(QuizRoute.result, isReplacement: true);
-                    }
-                  },
+                  text: _buttonText.toString(),
+                  onPressed: _onButtonPressed,
                 ),
               ),
             ],
@@ -142,6 +136,18 @@ class _QuestionsState extends State<Questions> with SingleTickerProviderStateMix
         }
       },
     );
+  }
+
+  void _onButtonPressed() {
+    switch (_buttonText) {
+      case QuestionsButtonText.next:
+        _tabController.animateTo(_tabController.index + 1);
+        break;
+      case QuestionsButtonText.finishQuiz:
+        context.read<QuizBloc>().add(QuizFinished());
+        context.vRouter.to(QuizRoute.result, isReplacement: true);
+        break;
+    }
   }
 
   @override

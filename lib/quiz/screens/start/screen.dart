@@ -107,7 +107,7 @@ class _StartScreenState extends State<StartScreen> {
                     opacity: state.category != null && state.difficulty != null ? 1 : 0.5,
                     child: CustomButton(
                       text: S.current.start_button_text,
-                      onPressed: _onButtonNextPressed,
+                      onPressed: _onButtonPressed,
                     ),
                   );
                 } else {
@@ -121,7 +121,7 @@ class _StartScreenState extends State<StartScreen> {
     );
   }
 
-  void _onButtonNextPressed() {
+  void _onButtonPressed() {
     final state = context.read<QuizBloc>().state;
 
     if (state is QuizStarting) {
